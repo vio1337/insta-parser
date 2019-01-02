@@ -13,7 +13,6 @@ https.get('https://www.instagram.com/edrecoveryroots/', (resp) => {
   	resp.on('end', () => {
   		const soup = new JSSoup(data)
   		console.log(soup)
-    	// console.log(JSON.parse(data).explanation)
   	})
 
 }).on("error", (err) => {

@@ -1,22 +1,10 @@
-const JSSoup = require('jssoup').default
-const https = require('https')
+const fetch = require('node-fetch')
+require('dotenv/config')
+
+fetchProfile = async () => {
+	let r = await fetch(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${process.env.TOKEN}`)
+	let data = await r.json()
+	return data.data
+}
 
 
-
-https.get('https://www.instagram.com/edrecoveryroots/', (resp) => {
-	
-	let data = ''
-	resp.on('data', (chunk) => {
-		data += chunk
-	})
-
-  	resp.on('end', () => {
-  		const soup = new JSSoup(data)
-  		console.log(soup)
-  	})
-
-}).on("error", (err) => {
-
-  console.log("Error: " + err.message);
-
-})

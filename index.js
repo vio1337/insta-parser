@@ -6,8 +6,8 @@ fetch(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${proc
 .then(r=> r.data)
 .then(r=> {
 	const arr = []
-	let obj = {}
 	for (let i=0; i<=8; i++) {
+		let obj = {}
 		let photo = r[i].images.standard_resolution.url
 		let link = r[i].link
 		obj[photo] = link
@@ -16,8 +16,10 @@ fetch(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${proc
 	return arr
 })
 .then(r=> {
-	let url = Object.keys(r).map((photo,i)=> {
-		return `<img class="insta-pic" src="${url}"/>`
+	let html = r.map((x, i)=> {
+		let photo = Object.keys(x).toString()
+		let url = Object.values(x).toString()
+		return `<a href="${url}"><img class="insta-pic" src="${photo}"/></a>`
 	})
-	console.log(r)
+	console.log(html)
 })

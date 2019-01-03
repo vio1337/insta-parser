@@ -7,9 +7,7 @@ fetch(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${proc
 .then(r=> {
 	let obj = {}
 	for (let i=0; i<=8; i++) {
-		let photo = r[i].images.standard_resolution.url
-		let link = r[i].link
-		obj[photo] = link
+		obj[r[i].images.standard_resolution.url] = r[i].link
 	}
 	return obj
 })

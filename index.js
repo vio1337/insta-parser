@@ -13,7 +13,7 @@ fetch(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${proc
 })
 .then(r=> {
 	let html = Object.keys(r).map((x)=> {	
-		return `<a href="${r[x]}"><img class="insta-pic" src="${x}"/></a>`
+		return `<a href="${r[x]}"><img style="height: 175px; width:175px" src="${x}"/></a>`
 	})
 	console.log(html)
 })
